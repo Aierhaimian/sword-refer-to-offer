@@ -81,11 +81,36 @@ private:
 
         return pClonedHead;
     }
+
+    void buildingNodes(ComplexNode *pNode, ComplexNode *pNext, ComplexNode *pSibling)
+    {
+        if (pNode != nullptr)
+        {
+            pNode->m_pNext = pNext;
+            pNode->m_pSibling = pSibling;
+        }
+    }
+
+    void printList(ComplexNode *pHead)
+    {
+        ComplexNode *pNode = pHead;
+        while(pNode != nullptr)
+        {
+            cout << "The value of this node is: " << pNode->m_nValue << endl;
+            if (pNode->m_pSibling != nullptr)
+                cout << "The value of its sibling is: " << pNode->m_pSibling->m_nValue << endl;
+            else
+                cout << "This node does not have a sibling." << endl;
+            cout << endl;
+
+            pNode = pNode->m_pNext;
+        }
+    }
 };
+
 
 int main()
 {
-    std::cout << "Hello world" << std::endl;
     return 0;
 }
 
